@@ -10,11 +10,32 @@
 
 它适用于 Codex、Claude Code，以及其他支持 `SKILL.md` Agent Skills 格式的工具。
 
+## 60 秒了解效果
+
+最短的有效演示就是一段对话：给出参考源，让 skill 推断项目目标，比较一个想法，最后由用户明确授权小范围改动。完整对话见 [`demo/quick-demo.md`](demo/quick-demo.md)。
+
+```mermaid
+flowchart LR
+  A[参考源 + 当前仓库] --> B[推断目标与约束]
+  B --> C[比较匹配度、风险、工作量]
+  C --> D{用户选择}
+  D -->|暂不采用| E[不修改文件]
+  D -->|采用并授权| F[小范围实现 + 测试]
+```
+
 ## 一分钟安装
 
 先 clone 本仓库，再把规范包 `skills/remix-me` 安装到你使用的 agent。两种平台使用同一份核心 `SKILL.md`。
 
 ### Codex
+
+在 Codex 中执行下面这一条命令，安装固定版本 `v0.1.0`：
+
+```text
+$skill-installer install https://github.com/shepnerd/remix-me-skill/tree/v0.1.0/skills/remix-me
+```
+
+如果需要手动或离线安装，先 clone 本仓库，再复制 skill 目录：
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills/remix-me"

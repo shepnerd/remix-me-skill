@@ -10,11 +10,32 @@ It extracts useful ideas, compares them with the current project’s goals and c
 
 It works with Codex, Claude Code, and other tools that support the `SKILL.md` Agent Skills format.
 
+## See it in 60 seconds
+
+The shortest useful demo is a small conversation: give a reference, let the skill infer the project goal, compare one idea, then explicitly authorize a focused change. The complete transcript is in [`demo/quick-demo.md`](demo/quick-demo.md).
+
+```mermaid
+flowchart LR
+  A[Reference + current repo] --> B[Infer goal and constraints]
+  B --> C[Compare fit, risk, effort]
+  C --> D{User chooses}
+  D -->|defer| E[No files changed]
+  D -->|adopt + authorize| F[Focused implementation + tests]
+```
+
 ## Install in one minute
 
 Clone this repository, then install the canonical `skills/remix-me` directory for the agent you use. The same core `SKILL.md` works on both platforms.
 
 ### Codex
+
+Inside Codex, install the pinned public release with one command:
+
+```text
+$skill-installer install https://github.com/shepnerd/remix-me-skill/tree/v0.1.0/skills/remix-me
+```
+
+For a manual/offline install, clone the repository and copy the skill directory:
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills/remix-me"
