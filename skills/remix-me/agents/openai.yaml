@@ -1,0 +1,4 @@
+interface:
+  display_name: "Remix Me"
+  short_description: "Learn and adapt reference ideas"
+  default_prompt: "Use $remix-me to compare these reference sources with my project goals and propose what is worth adapting."
